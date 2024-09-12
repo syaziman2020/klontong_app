@@ -8,7 +8,7 @@ class GetProduct {
 
   GetProduct(this.productRepository);
 
-  Future<Either<Failure, Product>> execute(int idPrimary) async {
-    return await productRepository.getProductById(idPrimary);
+  Future<Either<Failure, Product>> execute(String idPrimary) async {
+    return await productRepository.getProduct(idPrimary);
   }
 }

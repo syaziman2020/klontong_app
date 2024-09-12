@@ -13,8 +13,25 @@ class ProductModel extends Product {
     required super.height,
     required super.image,
     required super.price,
-    required super.idPrimary,
+    super.idPrimary,
   });
+
+  factory ProductModel.fromProduct(Product product) {
+    return ProductModel(
+      id: product.id,
+      category: product.category,
+      sku: product.sku,
+      name: product.name,
+      description: product.description,
+      weight: product.weight,
+      width: product.width,
+      length: product.length,
+      height: product.height,
+      image: product.image,
+      price: product.price,
+      idPrimary: product.idPrimary,
+    );
+  }
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
@@ -46,7 +63,6 @@ class ProductModel extends Product {
     data['height'] = height;
     data['image'] = image;
     data['harga'] = price;
-    data['_id'] = idPrimary;
     return data;
   }
 
