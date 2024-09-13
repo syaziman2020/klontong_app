@@ -1,11 +1,14 @@
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
-import 'package:klontong_app/features/product/data/datasources/product_remote_datasource.dart';
-import 'package:klontong_app/features/product/data/repositories/product_repository_implementation.dart';
-import 'package:klontong_app/features/product/domain/repositories/product_repository.dart';
-import 'package:klontong_app/features/product/domain/usecases/get_all_product.dart';
-import 'package:klontong_app/features/product/domain/usecases/get_product.dart';
-import 'package:klontong_app/features/product/presentation/bloc/product_bloc.dart';
+import 'features/product/domain/usecases/add_product.dart';
+import 'features/product/domain/usecases/delete_product.dart';
+import 'features/product/domain/usecases/update_product.dart';
+import 'features/product/data/datasources/product_remote_datasource.dart';
+import 'features/product/data/repositories/product_repository_implementation.dart';
+import 'features/product/domain/repositories/product_repository.dart';
+import 'features/product/domain/usecases/get_all_product.dart';
+import 'features/product/domain/usecases/get_product.dart';
+import 'features/product/presentation/bloc/product_bloc.dart';
 
 var injection = GetIt.instance;
 
@@ -20,6 +23,7 @@ Future<void> init() async {
 
   /// FEATURE - PRODUCT
   // BLOC
+
   injection.registerFactory(
     () => ProductBloc(
       getAllProduct: injection(),
@@ -38,6 +42,21 @@ Future<void> init() async {
   );
   injection.registerLazySingleton(
     () => GetProduct(
+      injection(),
+    ),
+  );
+  injection.registerLazySingleton(
+    () => AddProduct(
+      injection(),
+    ),
+  );
+  injection.registerLazySingleton(
+    () => UpdateProduct(
+      injection(),
+    ),
+  );
+  injection.registerLazySingleton(
+    () => DeleteProduct(
       injection(),
     ),
   );

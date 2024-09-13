@@ -98,8 +98,11 @@ class ProductRemoteDataSourceImplements implements ProductRemoteDatasource {
   Future<bool> updateProduct(Product product) async {
     try {
       final ProductModel productModel = ProductModel.fromProduct(product);
-      final response =
-          await dio.put('${MainUrl.url}/products/${productModel.idPrimary}');
+      final response = await dio.put(
+          '${MainUrl.url}/products/${productModel.idPrimary}',
+          data: productModel.toJson());
+
+      print(response);
       if (response.statusCode == 200) {
         return true;
       } else if (response.statusCode == 400) {

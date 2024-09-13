@@ -12,6 +12,8 @@ class GetAllProductEvents extends ProductEvent {
   List<Object> get props => [];
 }
 
+class LoadMoreProductEvent extends ProductEvent {}
+
 class GetProductEvent extends ProductEvent {
   final String idPrimary;
   const GetProductEvent(this.idPrimary);
@@ -38,4 +40,9 @@ class DeleteProductEvent extends ProductEvent {
   const DeleteProductEvent(this.idPrimary);
   @override
   List<Object> get props => [idPrimary];
+}
+
+class SearchProductEvent extends ProductEvent {
+  final String query;
+  const SearchProductEvent(this.query);
 }

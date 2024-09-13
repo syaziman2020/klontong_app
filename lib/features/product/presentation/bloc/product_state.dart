@@ -24,11 +24,17 @@ enum LoadingType {
   update, // For ProductUpdateLoading
   add, // For ProductAddLoading
   delete, // For ProductDeleteLoading
+  search,
 }
 
 class ProductsLoadedState extends ProductState {
   final List<Product> products;
-  const ProductsLoadedState(this.products);
+  final int totalProduct;
+
+  const ProductsLoadedState(
+    this.products,
+    this.totalProduct,
+  );
 
   @override
   List<Object> get props => [products];
@@ -42,10 +48,10 @@ class ProductSingleState extends ProductState {
 }
 
 class ProductUpdateState extends ProductState {
-  final Product updatedProduct;
-  const ProductUpdateState(this.updatedProduct);
+  final bool result;
+  const ProductUpdateState(this.result);
   @override
-  List<Object> get props => [updatedProduct];
+  List<Object> get props => [result];
 }
 
 class ProductAddState extends ProductState {
@@ -56,11 +62,11 @@ class ProductAddState extends ProductState {
 }
 
 class ProductDeleteState extends ProductState {
-  final String idPrimary;
-  const ProductDeleteState(this.idPrimary);
+  final bool result;
+  const ProductDeleteState(this.result);
 
   @override
-  List<Object> get props => [idPrimary];
+  List<Object> get props => [result];
 }
 
 class ProductErrorState extends ProductState {
@@ -79,4 +85,10 @@ enum ErrorType {
   single, // For individual product errors
   update, // For update errors
   delete, // For delete errors
+  search,
+}
+
+class ProductSearchResultState extends ProductState {
+  final List<Product> searchResults;
+  const ProductSearchResultState(this.searchResults);
 }

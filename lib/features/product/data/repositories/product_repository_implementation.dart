@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:klontong_app/features/product/data/datasources/product_remote_datasource.dart';
-import 'package:klontong_app/features/product/data/models/product_model.dart';
-import 'package:klontong_app/features/product/domain/entities/product.dart';
-import 'package:klontong_app/features/product/domain/repositories/product_repository.dart';
+import '../datasources/product_remote_datasource.dart';
+import '../models/product_model.dart';
+import '../../domain/entities/product.dart';
+import '../../domain/repositories/product_repository.dart';
 
 import '../../../../core/error/failure.dart';
 

@@ -19,6 +19,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final AddProduct addProduct;
   final UpdateProduct updateProduct;
   final DeleteProduct deleteProduct;
+
+  final int batchSize = 12; // Number of items per batch
+  List<Product> _allProducts = []; // Store all products here
+  List<Product> products = []; // Store all products here
+  List<Product> _searchResults = [];
+  int _currentIndex = 0;
   ProductBloc({
     required this.getAllProduct,
     required this.getProduct,
@@ -41,7 +47,25 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         } else {
           emit(const ProductErrorState('Unknown Error', ErrorType.all));
         }
-      }, (r) => emit(ProductsLoadedState(r)));
+      }, (r) {
+        _allProducts = r;
+
+        _currentIndex = batchSize;
+        products = _allProducts.take(batchSize).toList();
+
+        emit(ProductsLoadedState(products, _allProducts.length));
+      });
+    });
+
+    on<LoadMoreProductEvent>((event, emit) async {
+      if (_currentIndex < _allProducts.length) {
+        final nextBatch =
+            _allProducts.skip(_currentIndex).take(batchSize).toList();
+        _currentIndex += batchSize;
+
+        emit(ProductsLoadedState(
+            List.from(products)..addAll(nextBatch), _allProducts.length));
+      }
     });
 
     on<GetProductEvent>((event, emit) async {
@@ -61,6 +85,20 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           emit(const ProductErrorState('Unknown Error', ErrorType.single));
         }
       }, (r) => emit(ProductSingleState(r)));
+    });
+
+    on<SearchProductEvent>((event, emit) async {
+      emit(const ProductLoadingState(LoadingType.search));
+      _searchResults = _allProducts.where((product) {
+        return product.name.toLowerCase().contains(event.query.toLowerCase());
+      }).toList();
+
+      if (_searchResults.isEmpty) {
+        emit(ProductErrorState(
+            'No products found for "${event.query}"', ErrorType.search));
+      } else {
+        emit(ProductsLoadedState(_searchResults, _allProducts.length));
+      }
     });
 
     on<AddProductEvent>((event, emit) async {
@@ -96,7 +134,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         } else {
           emit(const ProductErrorState('Unknown Error', ErrorType.update));
         }
-      }, (r) => emit(ProductAddState(r)));
+      }, (r) => emit(ProductUpdateState(r)));
     });
 
     on<DeleteProductEvent>((event, emit) async {
@@ -115,7 +153,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         } else {
           emit(const ProductErrorState('Unknown Error', ErrorType.update));
         }
-      }, (r) => emit(ProductAddState(r)));
+      }, (r) => emit(ProductDeleteState(r)));
     });
   }
 }
