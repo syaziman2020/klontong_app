@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:klontong_app/core/components/spaces.dart';
-import 'package:klontong_app/features/product/presentation/bloc/product_bloc.dart';
+import '../../../../core/components/spaces.dart';
+import '../bloc/product_bloc.dart';
 
 import '../../../../core/components/buttons.dart';
 import '../../../../core/constants/color_manager.dart';

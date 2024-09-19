@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:klontong_app/core/components/buttons.dart';
-import 'package:klontong_app/core/components/custom_textfield.dart';
-import 'package:klontong_app/core/components/spaces.dart';
-import 'package:klontong_app/core/constants/color_manager.dart';
-import 'package:klontong_app/core/constants/font_manager.dart';
-import 'package:klontong_app/features/product/domain/entities/product.dart';
-import 'package:klontong_app/features/product/presentation/bloc/product_bloc.dart';
-import 'package:klontong_app/features/product/presentation/pages/list_product_page.dart';
+import '../../../../core/components/buttons.dart';
+import '../../../../core/components/custom_textfield.dart';
+import '../../../../core/components/spaces.dart';
+import '../../../../core/constants/color_manager.dart';
+import '../../../../core/constants/font_manager.dart';
+import '../../domain/entities/product.dart';
+import '../bloc/product_bloc.dart';
+import 'list_product_page.dart';
 
 import '../../../../core/constants/style_manager.dart';
 import 'success_page.dart';

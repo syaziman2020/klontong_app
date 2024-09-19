@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:klontong_app/features/product/presentation/pages/add_product_page.dart';
+import 'add_product_page.dart';
 import '../../../../core/components/search_input.dart';
 
 import 'detail_product_page.dart';
