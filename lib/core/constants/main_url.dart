@@ -1,4 +1,4 @@
 class MainUrl {
   static const String url =
-      'https://crudcrud.com/api/99f76a8e41bf42089e19a925f6825960';
+      'https://crudcrud.com/api/340e5b290a174da994a7665d1dcc44f2';
 }

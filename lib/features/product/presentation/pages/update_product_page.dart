@@ -17,32 +17,32 @@ import 'success_page.dart';
 class UpdateProductPage extends StatefulWidget {
   final Product product;
 
-  UpdateProductPage({super.key, required this.product});
+  const UpdateProductPage({super.key, required this.product});
 
   @override
   State<UpdateProductPage> createState() => _UpdateProductPageState();
 }
 
 class _UpdateProductPageState extends State<UpdateProductPage> {
-  TextEditingController nameC = TextEditingController();
+  final TextEditingController nameC = TextEditingController();
 
-  TextEditingController imageC = TextEditingController();
+  final TextEditingController imageC = TextEditingController();
 
-  TextEditingController skuC = TextEditingController();
+  final TextEditingController skuC = TextEditingController();
 
-  TextEditingController lengthC = TextEditingController();
+  final TextEditingController lengthC = TextEditingController();
 
-  TextEditingController heigthC = TextEditingController();
+  final TextEditingController heigthC = TextEditingController();
 
-  TextEditingController widthC = TextEditingController();
+  final TextEditingController widthC = TextEditingController();
 
-  TextEditingController weightC = TextEditingController();
+  final TextEditingController weightC = TextEditingController();
 
-  TextEditingController priceC = TextEditingController();
+  final TextEditingController priceC = TextEditingController();
 
-  TextEditingController categoryC = TextEditingController();
+  final TextEditingController categoryC = TextEditingController();
 
-  TextEditingController descC = TextEditingController();
+  final TextEditingController descC = TextEditingController();
 
   @override
   void initState() {

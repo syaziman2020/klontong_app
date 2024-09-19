@@ -15,16 +15,16 @@ import '../../../../core/constants/style_manager.dart';
 import 'success_page.dart';
 
 class AddProductPage extends StatelessWidget {
-  TextEditingController nameC = TextEditingController();
-  TextEditingController imageC = TextEditingController();
-  TextEditingController skuC = TextEditingController();
-  TextEditingController lengthC = TextEditingController();
-  TextEditingController heigthC = TextEditingController();
-  TextEditingController widthC = TextEditingController();
-  TextEditingController weightC = TextEditingController();
-  TextEditingController priceC = TextEditingController();
-  TextEditingController categoryC = TextEditingController();
-  TextEditingController descC = TextEditingController();
+  final TextEditingController nameC = TextEditingController();
+  final TextEditingController imageC = TextEditingController();
+  final TextEditingController skuC = TextEditingController();
+  final TextEditingController lengthC = TextEditingController();
+  final TextEditingController heigthC = TextEditingController();
+  final TextEditingController widthC = TextEditingController();
+  final TextEditingController weightC = TextEditingController();
+  final TextEditingController priceC = TextEditingController();
+  final TextEditingController categoryC = TextEditingController();
+  final TextEditingController descC = TextEditingController();
   AddProductPage({super.key});
 
   @override

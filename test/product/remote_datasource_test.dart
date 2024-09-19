@@ -543,7 +543,9 @@ void main() {
           }
         });
         test("Failed - 400", () async {
-          when(mockDio.put('$urlListProduct/$idPrimary')).thenAnswer(
+          when(mockDio.put('$urlListProduct/$idPrimary',
+                  data: fakeProductModel.toJson()))
+              .thenAnswer(
             (_) async => Response(
               data: {},
               statusCode: 400,
@@ -561,7 +563,9 @@ void main() {
           }
         });
         test("Failed - 404", () async {
-          when(mockDio.put('$urlListProduct/$idPrimary')).thenAnswer(
+          when(mockDio.put('$urlListProduct/$idPrimary',
+                  data: fakeProductModel.toJson()))
+              .thenAnswer(
             (_) async => Response(
               data: {},
               statusCode: 404,
@@ -578,7 +582,9 @@ void main() {
           }
         });
         test("Failed - 500", () async {
-          when(mockDio.put('$urlListProduct/$idPrimary')).thenAnswer(
+          when(mockDio.put('$urlListProduct/$idPrimary',
+                  data: fakeProductModel.toJson()))
+              .thenAnswer(
             (_) async => Response(
               data: {},
               statusCode: 500,
@@ -595,7 +601,9 @@ void main() {
           }
         });
         test("Failed - 418", () async {
-          when(mockDio.put('$urlListProduct/$idPrimary')).thenAnswer(
+          when(mockDio.put('$urlListProduct/$idPrimary',
+                  data: fakeProductModel.toJson()))
+              .thenAnswer(
             (_) async => Response(
               data: {},
               statusCode: 418,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:klontong_app/core/constants/color_manager.dart';
 
 enum ButtonStyleType { filled, outlined }
 

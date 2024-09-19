@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:klontong_app/core/components/spaces.dart';
-import 'package:klontong_app/features/product/domain/usecases/delete_product.dart';
 import 'package:klontong_app/features/product/presentation/pages/list_product_page.dart';
 import 'package:klontong_app/features/product/presentation/pages/success_page.dart';
 import 'package:klontong_app/features/product/presentation/pages/update_product_page.dart';
@@ -458,25 +457,32 @@ class _DetailProductPageState extends State<DetailProductPage> {
       );
     }
 
-    return Scaffold(
-      backgroundColor: ColorManager.whiteC,
-      appBar: appBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22),
-        child: RefreshIndicator(
-          onRefresh: () async {
-            context.read<ProductBloc>().add(GetProductEvent(widget.idPrimary));
-          },
-          child: BlocBuilder<ProductBloc, ProductState>(
-            builder: (context, state) {
-              return ListView(
-                children: [
-                  editItem(),
-                  pictureContent(),
-                  information(),
-                ],
-              );
+    return PopScope(
+      onPopInvoked: (didPop) {
+        context.read<ProductBloc>().add(GetAllProductEvents());
+      },
+      child: Scaffold(
+        backgroundColor: ColorManager.whiteC,
+        appBar: appBar(),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 22),
+          child: RefreshIndicator(
+            onRefresh: () async {
+              context
+                  .read<ProductBloc>()
+                  .add(GetProductEvent(widget.idPrimary));
             },
+            child: BlocBuilder<ProductBloc, ProductState>(
+              builder: (context, state) {
+                return ListView(
+                  children: [
+                    editItem(),
+                    pictureContent(),
+                    information(),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),
